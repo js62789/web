@@ -1,0 +1,27 @@
+{
+  "name": "@monetaur/dev-utils",
+  "version": "0.1.0",
+  "description": "A collection of development utilities for Monetaur applications",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel --out-dir dist/ src/ --source-maps",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@loadable/webpack-plugin": "^5.15.2",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.8",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "^2.6.1",
+    "react-refresh": "^0.14.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-dev-middleware": "^5.3.3",
+    "webpack-hot-middleware": "^2.25.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3"
+  }
+}

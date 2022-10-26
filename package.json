@@ -1,0 +1,22 @@
+{
+  "name": "@monetaur/web",
+  "version": "0.1.0",
+  "description": "A suite of tools to build and run universal React web applications",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npm run lint --workspaces",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monetaur/web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/babel-preset-monetaur",
+    "packages/eslint-config-monetaur",
+    "packages/example-express",
+    "packages/dev-utils"
+  ]
+}
