@@ -1,3 +1,5 @@
+const { generateScopedName } = require('@monetaur/dev-utils');
+
 module.exports = function(api) {
   api.cache.using(() => process.env.NODE_ENV);
 
@@ -12,7 +14,7 @@ module.exports = function(api) {
     plugins: [
       '@loadable/babel-plugin',
       ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
-      ['babel-plugin-css-modules-transform', { generateScopedName: '[hash:base64:5]' }],
+      !isTargetWeb && ['babel-plugin-css-modules-transform', { generateScopedName }],
       isDevelopment && isTargetWeb && 'react-refresh/babel',
     ].filter(Boolean),
   };

@@ -3,6 +3,7 @@ import { HotModuleReplacementPlugin } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import LoadablePlugin from '@loadable/webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import getLocalIdent from './getLocalIdent';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -29,25 +30,37 @@ export default {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.module\.css$/,
         use: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              modules: true,
+              modules: {
+                localIdentName: '[hash:base64:5]',
+                getLocalIdent,
+              },
             },
           },
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: [
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
         ],
       },
     ],
   },
   plugins: [
-    new LoadablePlugin(),
     new MiniCssExtractPlugin({
       filename: isProduction ? '[name].[contenthash].css' : '[name].css',
+      chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css',
     }),
+    new LoadablePlugin(),
     isDevelopment && new HotModuleReplacementPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),

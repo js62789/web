@@ -1,0 +1,9 @@
+{
+  "editor.rulers": [
+    160
+  ],
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "javascript.preferences.quoteStyle": "single"
+}

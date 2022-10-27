@@ -1,3 +1,7 @@
-h1.primary {
-  color: red;
+.fullscreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }

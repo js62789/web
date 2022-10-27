@@ -4,6 +4,8 @@ import render from './middleware/render';
 
 const app = express();
 
+app.use(express.static('public'));
+
 if (process.env.NODE_ENV === 'development') {
   app.use(webpackMiddleware());
 }

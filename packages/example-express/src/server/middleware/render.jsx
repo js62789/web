@@ -1,8 +1,9 @@
 import path from 'path';
 import { renderToPipeableStream } from 'react-dom/server';
 import { StaticRouter } from "react-router-dom/server";
-import Application from '../../components/Application';
 import { ChunkExtractor } from '@loadable/server';
+import { HelmetProvider } from 'react-helmet-async';
+import Application from '../../components/Application';
 
 export default function render(req, res) {
   let didError = false;
@@ -13,26 +14,39 @@ export default function render(req, res) {
   // We create an extractor from the statsFile
   const extractor = new ChunkExtractor({ statsFile });
 
+  const helmetContext = {};
+
   // Wrap your application using "collectChunks"
   const app = extractor.collectChunks((
     <StaticRouter location={req.url}>
-      <Application />
+      <HelmetProvider context={helmetContext}>
+        <Application />
+      </HelmetProvider>
     </StaticRouter>
   ));
 
   const stream = renderToPipeableStream(app, {
     onShellReady() {
       res.statusCode = didError ? 500 : 200;
+
       res.setHeader('Content-type', 'text/html');
 
+      const { helmet } = helmetContext;
+
       // typically you'd want to write some preliminary HTML, since React doesn't handle this
-      res.write([
-        '<html><head>',
-        '<title>Test</title>',
-        extractor.getLinkTags(),
-        extractor.getStyleTags(),
-        '</head><body><div id="root">',
-      ].join(''))
+      res.write(`
+        <!doctype html>
+        <html ${helmet.htmlAttributes.toString()}>
+          <head>
+            ${helmet.title.toString()}
+            ${helmet.meta.toString()}
+            ${helmet.link.toString()}
+            ${extractor.getLinkTags()}
+            ${helmet.style.toString()}
+            ${extractor.getStyleTags()}
+          </head>
+        <body ${helmet.bodyAttributes.toString()}><div id="root">
+      `.trim());
 
       stream.pipe(res, { end: false });
     },
@@ -42,7 +56,8 @@ export default function render(req, res) {
       res.send('<!doctype html><h1>An error has occurred</h1></script>');
     },
     onAllReady() {
-      res.end(`</div>${extractor.getScriptTags()}</body></html>`);
+      const { helmet } = helmetContext;
+      res.end(`</div>${helmet.script.toString()}${extractor.getScriptTags()}</body></html>`);
     },
     onError(err) {
       didError = true;
