@@ -3,6 +3,7 @@ module.exports = {
     es6: true,
     browser: true,
     node: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -21,6 +22,7 @@ module.exports = {
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
     'react/react-in-jsx-scope': 'off',
+    'semi': ['error', 'always'],
   },
   settings: {
     'import/resolver': {

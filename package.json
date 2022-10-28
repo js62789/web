@@ -17,6 +17,7 @@
     "packages/babel-preset-monetaur",
     "packages/eslint-config-monetaur",
     "packages/example-express",
-    "packages/dev-utils"
+    "packages/dev-utils",
+    "packages/config"
   ]
 }

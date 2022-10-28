@@ -1,7 +1,8 @@
+import config from './config';
 import server from './server';
 
-const port = 3000;
+const port = config.get('port');
 
 server.listen(port, () => {
-  console.log(`Server listening on port ${port}`)
+  console.log(`Server listening on port ${port}`);
 });

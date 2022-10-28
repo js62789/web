@@ -1,5 +1,5 @@
 import path from 'path';
-import { HotModuleReplacementPlugin } from 'webpack';
+import { DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import LoadablePlugin from '@loadable/webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
@@ -56,6 +56,9 @@ export default {
     ],
   },
   plugins: [
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
     new MiniCssExtractPlugin({
       filename: isProduction ? '[name].[contenthash].css' : '[name].css',
       chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css',

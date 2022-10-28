@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import 'normalize.css';
 
 const HomePage = loadable(() => import('../HomePage'));
+const Dashboard = loadable(() => import('../Dashboard'));
 const ErrorPage = loadable(() => import('../ErrorPage'));
 
 export default function Application() {
@@ -19,6 +20,7 @@ export default function Application() {
       </Helmet>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<ErrorPage message="Not Found" />} />
       </Routes>
     </Fragment>

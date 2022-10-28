@@ -8,4 +8,4 @@ const generateClassName = genericNames(format, {
 
 export default (localName, filePath) => {
   return generateClassName(localName, filePath.toLowerCase()).replace('-module_', '_');
-}
+};

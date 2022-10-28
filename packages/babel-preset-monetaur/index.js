@@ -18,4 +18,4 @@ module.exports = function(api) {
       isDevelopment && isTargetWeb && 'react-refresh/babel',
     ].filter(Boolean),
   };
-}
+};
