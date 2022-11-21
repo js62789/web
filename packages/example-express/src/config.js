@@ -8,6 +8,13 @@ const config = generateConfig({
     env: 'NODE_ENV',
     arg: 'env',
   },
+  compress: {
+    doc: 'Enable gzip compression.',
+    format: 'Boolean',
+    default: false,
+    env: 'COMPRESS',
+    arg: 'compress',
+  },
   port: {
     doc: 'The port to bind.',
     format: 'port',

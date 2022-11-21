@@ -18,6 +18,7 @@
     "packages/eslint-config-monetaur",
     "packages/example-express",
     "packages/dev-utils",
-    "packages/config"
+    "packages/config",
+    "packages/css-modules-names"
   ]
 }

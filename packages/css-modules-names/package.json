@@ -1,0 +1,24 @@
+{
+  "name": "@monetaur/css-modules-names",
+  "version": "0.1.0",
+  "description": "A collection of helpers for css modules naming conventions",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3"
+  },
+  "scripts": {
+    "build": "babel --out-dir dist/ src/ --source-maps",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monetaur/web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monetaur/web/issues"
+  },
+  "homepage": "https://github.com/monetaur/web#readme"
+}

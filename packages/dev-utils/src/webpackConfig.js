@@ -3,7 +3,7 @@ import { DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import LoadablePlugin from '@loadable/webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import getLocalIdent from './getLocalIdent';
+import { getLocalIdent } from '@monetaur/css-modules-names';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -38,7 +38,6 @@ export default {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: '[hash:base64:5]',
                 getLocalIdent,
               },
             },
@@ -63,7 +62,9 @@ export default {
       filename: isProduction ? '[name].[contenthash].css' : '[name].css',
       chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css',
     }),
-    new LoadablePlugin(),
+    new LoadablePlugin({
+      writeToDisk: true,
+    }),
     isDevelopment && new HotModuleReplacementPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),

@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel --out-dir dist/ src/ --source-maps",
+    "clean": "rm -rf dist",
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

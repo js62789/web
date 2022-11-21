@@ -3,10 +3,18 @@ import loadable from '@loadable/component';
 import { Helmet } from 'react-helmet-async';
 import { Fragment } from 'react';
 import 'normalize.css';
+import './Application.css';
+import Page from '../Page';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-const HomePage = loadable(() => import('../HomePage'));
-const Dashboard = loadable(() => import('../Dashboard'));
-const ErrorPage = loadable(() => import('../ErrorPage'));
+const options = {
+  fallback: (
+    <Fragment>Loading...</Fragment>
+  ),
+};
+
+const HomePage = loadable(() => import('../HomePage'), options);
+const ErrorPage = loadable(() => import('../ErrorPage'), options);
 
 export default function Application() {
   return (
@@ -18,11 +26,14 @@ export default function Application() {
         <meta name="description" content="An application to test out Monetaur's web tooling" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="*" element={<ErrorPage message="Not Found" />} />
-      </Routes>
+      <Page>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="*" element={<ErrorPage message="Not Found" />} />
+          </Routes>
+        </ErrorBoundary>
+      </Page>
     </Fragment>
   );
 }

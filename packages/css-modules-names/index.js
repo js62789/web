@@ -6,6 +6,14 @@ const generateClassName = genericNames(format, {
   context: process.cwd(),
 });
 
-export default (localName, filePath) => {
+function doIt(localName, filePath) {
   return generateClassName(localName, filePath.toLowerCase()).replace('-module_', '_');
+}
+
+exports.generateScopedName = function generateScopedName(c, path) {
+  return doIt(c, path);
+};
+
+exports.getLocalIdent = function getLocalIdent(loaderContext, localIdentName, localName) {
+  return doIt(localName, loaderContext.resourcePath);
 };

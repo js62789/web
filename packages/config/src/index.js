@@ -14,7 +14,7 @@ const CUSTOM_FORMATS = {
 };
 
 function isSchemaItem(obj) {
-  return !!obj.default;
+  return typeof obj.default !== 'undefined';
 }
 
 function buildStore(schema) {
