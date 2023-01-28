@@ -30,7 +30,7 @@ export default function Application() {
         <ErrorBoundary>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<ErrorPage message="Not Found" />} />
+            <Route path="*" element={<ErrorPage message="Page Not Found" status={404} />} />
           </Routes>
         </ErrorBoundary>
       </Page>

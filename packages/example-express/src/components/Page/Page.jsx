@@ -11,7 +11,7 @@ function Page({ children }) {
   return (
     <div className={cx('content')}>
       <header className={cx('header', 'spread')}>
-        <img alt="Logo" height={45} src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" width={218} />
+        <img alt="Logo" height={45} src="https://via.placeholder.com/436x90/000" width={218} />
         <nav>
           <NavLink className={activeLink} end to="/">Home</NavLink>
           <NavLink className={activeLink} to="/settings">Settings</NavLink>

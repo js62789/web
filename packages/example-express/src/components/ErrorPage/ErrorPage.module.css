@@ -1,0 +1,15 @@
+.sad {
+  display: block;
+  font-size: 10rem;
+  margin: -20% 0;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  color: #333;
+  margin-bottom: 0;
+}
