@@ -1,6 +1,7 @@
 const genericNames = require('generic-names');
 
-const format = process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]';
+// TODO Use '[hash:base64:5]' in production
+const format = '[name]__[local]___[hash:base64:5]';
 
 const generateClassName = genericNames(format, {
   context: process.cwd(),
@@ -15,5 +16,5 @@ exports.generateScopedName = function generateScopedName(c, path) {
 };
 
 exports.getLocalIdent = function getLocalIdent(loaderContext, localIdentName, localName) {
-  return doIt(localName, loaderContext.resourcePath);
+  return doIt(localName, loaderContext.resourcePath.replace('/build/', '/src/'));
 };

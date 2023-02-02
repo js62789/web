@@ -1,0 +1,26 @@
+.subtitle {
+  display: block;
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.caption {
+  color: var(--captionColor, #666);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.centered {
+  display: block;
+  text-align: center;
+}
+
+.title {
+  color: inherit;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+}

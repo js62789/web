@@ -34,7 +34,6 @@
 
 .content {
   align-items: center;
-  background-image: linear-gradient(to right, #d66d75, #e29587);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,10 +42,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .content {
-    background-color: #222;
-  }
-
   .header a {
     color: white;
   }

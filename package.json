@@ -19,6 +19,7 @@
     "packages/example-express",
     "packages/dev-utils",
     "packages/config",
-    "packages/css-modules-names"
+    "packages/css-modules-names",
+    "packages/components"
   ]
 }

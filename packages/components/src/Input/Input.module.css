@@ -1,0 +1,20 @@
+.input {
+  background-color: var(--inputBackgroundColor, transparent);
+  border-color: var(--inputBorderColor, rgba(0, 0, 0, 0.2));
+  border-style: solid;
+  border-radius: var(--inputBorderRadius, 0);
+  border-width: var(--inputBorderSize, 0 0 2px 0);
+  color: inherit;
+  font-size: 1rem;
+  padding: var(--inputPadding, 0.6rem);
+}
+
+.input:focus {
+  border-color: var(--inputBorderColorFocus, rgba(0, 0, 0, 0.3));
+  outline: none;
+}
+
+.grow {
+  display: block;
+  width: 100%;
+}

@@ -1,0 +1,22 @@
+
+.breakpoints {
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 600px) {
+  .breakpoints {
+    max-width: calc(600px - 30px);
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .breakpoints {
+    max-width: calc(992px - 30px);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .breakpoints {
+    max-width: calc(1200px - 30px);
+  }
+}

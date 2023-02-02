@@ -1,0 +1,25 @@
+.textarea {
+  background-color: var(--textAreaBackgroundColor, transparent);
+  border-color: var(--textAreaBorderColor, rgba(0, 0, 0, 0.2));
+  border-style: solid;
+  border-radius: var(--textAreaBorderRadius, 0.4rem);
+  border-width: var(--textAreaBorderSize, 2px);
+  color: inherit;
+  font-family: var(--fontFamily, Arial);
+  font-size: 1rem;
+  padding: var(--textAreaPadding, 0.6rem);
+}
+
+.textarea:focus {
+  border-color: var(--textAreaBorderColorFocus, rgba(0, 0, 0, 0.3));
+  outline: none;
+}
+
+.textarea::placeholder {
+  font-family: inherit;
+}
+
+.grow {
+  display: block;
+  width: 100%;
+}

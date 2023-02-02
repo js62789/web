@@ -1,0 +1,37 @@
+.button {
+  background-color: var(--buttonBackgroundColor, white);
+  border-color: var(--buttonBorderColor, #2a6b96);
+  border-radius: var(--buttonBorderRadius, 0.4rem);
+  border-style: solid;
+  color: var(--buttonTextColor, #2a6b96);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: var(--buttonPadding, 0.6rem 1.5rem);
+}
+
+.button:hover {
+  background-color: var(--buttonBackgroundHover, #e6f1f8);
+}
+
+.button:active {
+  background-color: var(--buttonBackgroundActive, #cde3f1);
+}
+
+.primary {
+  background-color: var(--primaryColor, #2a6b96);
+  border-color: var(--primaryColorBorder, #2a6b96);
+  color: white;
+}
+
+.primary:hover {
+  background-color: var(--primaryColorHover, #266087);
+}
+
+.primary:active {
+  background-color: var(--primaryColorActive, #1f4e6e);
+}
+
+.grow {
+  display: block;
+  width: 100%;
+}

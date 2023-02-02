@@ -5,16 +5,19 @@ module.exports = function(api) {
 
   const isDevelopment = process.env.NODE_ENV === 'development';
   const isTargetWeb = api.caller((caller) => caller && caller.target === 'web');
+  const isTargetWebpack = api.env('webpack');
 
   return {
     presets: [
-      '@babel/preset-env',
+      ['@babel/preset-env', {
+        modules: isTargetWebpack ? false : undefined,
+      }],
       '@babel/preset-react',
     ],
     plugins: [
       '@loadable/babel-plugin',
       ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
-      !isTargetWeb && ['babel-plugin-css-modules-transform', { generateScopedName }],
+      !isTargetWeb && !isTargetWebpack && ['babel-plugin-css-modules-transform', { generateScopedName }],
       ['babel-plugin-transform-media-imports'],
       isDevelopment && isTargetWeb && 'react-refresh/babel',
     ].filter(Boolean),
